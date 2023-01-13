@@ -77,4 +77,4 @@
    </table>
 </div>
 
-<!--<a href="#index">⬆ Back to Top</a>-->
+<a href="#index">⬆ Back to Top</a>
