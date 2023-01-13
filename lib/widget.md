@@ -1,31 +1,32 @@
 <h1 align="center">Android Widget</h1>
 
-* [TextView](#)
-* [ScrollView](#)
-* [Button](#)
-* [ImageButton](#)
-* [ImageView](#)
-* [Toast](#)
-* [Custom Toast](#)
-* [EditText](#)
-* [CheckBox](#)
-* [RadioButton,RadioGroup](#)
-* [Switch](#)
-* [Seekbar](#)
-* [RatingBar](#)
-* [WebView](#)
-* [DatePicker](#)
-* [DatePicker Dialog](#)
-* [TimePicker Dialog](#)
-* [Analog Clock](#)
-* [Digital Clock](#)
-* [Alert Dialog](#)
+<p id="index"></p>
+
+* [TextView](#TextView)
+* [ScrollView](#ScrollView)
+* [Button](#Button)
+* [ImageButton](#ImageButton)
+* [ImageView](#ImageView)
+* [Toast](#Toast)
+* [Custom Toast](#CustomToast)
+* [EditText](#EditText)
+* [CheckBox](#CheckBox)
+* [RadioButton,RadioGroup](#RadioButton)
+* [Switch](#Switch)
+* [Seekbar](#Seekbar)
+* [RatingBar](#RatingBar)
+* [WebView](#WebView)
+* [DatePicker](#DatePicker)
+* [DatePicker Dialog](#DatePickerDialog)
+* [TimePicker Dialog](#TimePicker)
+* [Analog Clock](#Analog)
+* [Digital Clock](#Digital)
+* [Alert Dialog](#Alert)
 * `Custom Alert Dialog`
-* [VideoView](#)
-* [ZoomControlls](#)
-* [Layout Weight & WeightSum](#)
-* [Custom Font](#)
-* [Styling](#)
+* [VideoView](#VideoView)
+* [ZoomControlls](#ZoomControlls)
+* [Layout Weight & WeightSum](#WeightSum)
+* [Custom Font](#Font)
 
 
 <p id="TextView"></p>
@@ -41,9 +42,7 @@
 		android:gravity="center"/>
 
 ```
-
-<p id="ScrollView"></p>
-
+<a href="#index">⬆ Back to Top</a>
 
 <p id="ScrollView"></p>
 
@@ -78,8 +77,7 @@
 	
 </LinearLayout>
 ```
-
-<p id="TextView"></p>
+<a href="#index">⬆ Back to Top</a>
 
 <p id="Button"></p>
 
@@ -146,6 +144,7 @@ public class MainActivity extends Activity implements OnClickListener
 	}
 }
 ```
+<a href="#index">⬆ Back to Top</a>
 
 <p id="ImageButton"></p>
 
@@ -158,6 +157,7 @@ public class MainActivity extends Activity implements OnClickListener
 		android:background="#E5574E"/>
 
 ```
+<a href="#index">⬆ Back to Top</a>
 
 <p id="ImageView"></p>
 
@@ -167,8 +167,7 @@ public class MainActivity extends Activity implements OnClickListener
 		android:src="@drawable/fazle-rabbi"
 		android:scaleType="fitStart"/>
 ```
-
-<p id="EditText"></p>
+<a href="#index">⬆ Back to Top</a>
 
 <p id="Toast"></p>
 
@@ -182,6 +181,7 @@ toast.setGravity(Gravity.CENTER,0,0);
 toast.show();
 
 ```
+<a href="#index">⬆ Back to Top</a>
 
 <p id="CustomToast"></p>
 
@@ -196,6 +196,9 @@ toast.setDuration(Toast.LENGTH_SHORT);
 toast.setView(customView);
 toast.show();
 ```
+<a href="#index">⬆ Back to Top</a>
+
+<p id="EditText"></p>
 
 ## EditText
 ```xml
@@ -214,8 +217,9 @@ toast.show();
 >> Then use:
 >> item.getText()
 ```
+<a href="#index">⬆ Back to Top</a>
 
-<p id="CheckBox">CheckBox</p>
+<p id="CheckBox"></p>
 
 ## CheckBox
 * XML File
@@ -232,6 +236,7 @@ if(myCheck.isChecked()){
 	   		text.setText(myCheck.getText());
 	   }
 ```
+<a href="#index">⬆ Back to Top</a>
 
 <p id="RadioButton"></p>
 
@@ -282,6 +287,7 @@ if(myCheck.isChecked()){
 	   
 	}
 ```
+<a href="#index">⬆ Back to Top</a>
 
 <p id="Switch"></p>
 
@@ -303,6 +309,7 @@ MySwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
 
 });
 ```
+<a href="#index">⬆ Back to Top</a>
 
 <p id="Seekbar"></p>
 
@@ -341,6 +348,7 @@ mySeekBar.setOnSeekBarChangeListener(new OnSeekBarChangeListener(){
 });
 ```
 
+<a href="#index">⬆ Back to Top</a>
 
 <p id="RatingBar"></p>
 
@@ -373,6 +381,7 @@ myRatingBar.setOnRatingBarChangeListener(new OnRatingBarChangeListener(){
 });
 ```
 
+<a href="#index">⬆ Back to Top</a>
 
 <p id="WebView"></p>
 
@@ -409,7 +418,7 @@ public void onBackPressed()
   }
 }
 ```
-
+<a href="#index">⬆ Back to Top</a>
 
 <p id="DatePicker"></p>
 
@@ -420,7 +429,7 @@ datePiker.getYear();
 datePiker.getMonth();
 datePiker.getDayOfMonth();
 ```
-
+<a href="#index">⬆ Back to Top</a>
 
 <p id="DatePickerDialog"></p>
 
@@ -474,7 +483,7 @@ public class MainActivity extends Activity implements OnClickListener
    
  }
 ```
-
+<a href="#index">⬆ Back to Top</a>
 
 <p id="TimePicker"></p>
 
@@ -482,6 +491,7 @@ public class MainActivity extends Activity implements OnClickListener
 ```xml
 <TimePicker/>
 ```
+<a href="#index">⬆ Back to Top</a>
 
 
 <p id="TimePickerDialog"></p>
@@ -533,6 +543,7 @@ private TimePickerDialog timePickerDialog;
  }
 
 ```
+<a href="#index">⬆ Back to Top</a>
 
 
 <p id="Analog"></p>
@@ -541,6 +552,7 @@ private TimePickerDialog timePickerDialog;
 ```xml
 <AnalogClock/>
 ```
+<a href="#index">⬆ Back to Top</a>
 
 
 <p id="Digital"></p>
@@ -549,6 +561,7 @@ private TimePickerDialog timePickerDialog;
 ```xml
 <DigitalClock/>
 ```
+<a href="#index">⬆ Back to Top</a>
 
 
 <p id="Alert"></p>
@@ -616,6 +629,7 @@ public class MainActivity extends Activity
 	
  }
 ```
+<a href="#index">⬆ Back to Top</a>
 
 
 <p id="VideoView"></p>
@@ -639,15 +653,94 @@ skipBtn.setOnClickListener(new View.OnClickListener(){
 	 }
 });
 ```
+<a href="#index">⬆ Back to Top</a>
 
 <p id="ZoomControlls"></p>
 
 ## ZoomControlls
-```xml
+```java
+// XML File:
+/*
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:gravity="top|center"
+	android:orientation="vertical">
 
+	<ZoomControls
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:gravity="center"
+    android:id="@+id/zoomBtn"
+    />
+
+	<ImageView
+		android:id="@+id/img"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_margin="20dp"
+		android:src="@drawable/ic_launcher"/>
+
+</LinearLayout>
+*/
+
+public class MainActivity extends Activity { 
+     
+    private ZoomControls zoomBtn;
+    private ImageView img;
+    private float x,y;
+    
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        
+        zoomBtn = findViewById(R.id.zoomBtn);
+        img = findViewById(R.id.img);
+        
+        
+        
+        zoomBtn.setOnZoomInClickListener(new View.OnClickListener(){
+
+                @Override
+                public void onClick(View view) {
+                    x = img.getScaleX();
+                    y = img.getScaleY();
+                    img.setScaleX(x+1);
+                    img.setScaleY(y+1);
+                }
+                
+        });
+        
+        zoomBtn.setOnZoomOutClickListener(new View.OnClickListener(){
+
+                @Override
+                public void onClick(View view) {
+                    x = img.getScaleX();
+                    y = img.getScaleY();
+                    if(x == 1 && y == 1){
+                        
+                    }
+                    else{
+                      img.setScaleX(x-1);
+                      img.setScaleY(y-1);
+                    }
+                }
+
+            });
+        
+        
+    }
+    
+    
+	
+} 
 ```
+<a href="#index">⬆ Back to Top</a>
 
-<p id="layoutWeight"></p>
+<p id="WeightSum"></p>
 
 ## Layout WeightSum
 ```xml
@@ -711,8 +804,9 @@ skipBtn.setOnClickListener(new View.OnClickListener(){
 </LinearLayout>
 
 ```
+<a href="#index">⬆ Back to Top</a>
 
-<p id="font"></p>
+<p id="Font"></p>
 
 ## Custom Font
 ```java
@@ -720,3 +814,4 @@ text = findViewById(R.id.text);
 myFont = Typeface.createFromAsset(getAssets(),"Baloo_2_regular.ttf");
 text.setTypeface(myFont);
 ```
+<a href="#index">⬆ Back to Top</a>
