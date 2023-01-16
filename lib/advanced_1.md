@@ -1,4 +1,4 @@
-<h1 align="">Android Advanced ViewGropup/View (Part 1)</h1>
+<a href="#"><h2 align="center">Android Advanced (Part 1)</h2></a>
 
 
 <p id="index"></p>
@@ -747,19 +747,414 @@
 <p id="Expandable"></p>
 
 ## Expandable ListView
-* XML File
-```xml
+1. Make a layout for header
+2. Make a layout for header_details
+* **activity_main.xml**
+   ```xml
+   <ExpandableListView
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:id="@+id/myListView"
+		android:layout_margin="10dp"
+		android:dividerHeight="10dp"
+		android:divider="#FFFFFFFF"/>
+   ```
+* **MainActivity.java**
+   ```java
+   import ...
+   
+   public class MainActivity extends Activity { 
+        
+       private ExpandableListView myListView;
+       private String[] headerData;
+       private String[] detailsData;
+       private ArrayList<String> header_data;
+       private HashMap<String,ArrayList<String>> details_data;
+       private int lastItem = -1;
+       
+       // For testing another data prepare way
+       private ArrayList<String> my_header_data;
+       private HashMap<String,ArrayList<String>> my_header_details;
+       
+       
+       @Override
+       protected void onCreate(Bundle savedInstanceState) {
+           super.onCreate(savedInstanceState);
+           setContentView(R.layout.activity_main);
+           
+           // find listview
+           myListView = findViewById(R.id.myListView);
+           //prepareData();
+           prepareData2();
+           // make adapter and set adapter
+           //CustomAdapter adapter = new CustomAdapter(this,header_data,details_data);
+           //myListView.setAdapter(adapter);
+           
+           
+           // For (prepareData2):
+           CustomAdapter adapter = new CustomAdapter(this,header_data,details_data);
+           myListView.setAdapter(adapter);
+           
+           
+           // set listener
+           myListView.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener(){
+   
+                   @Override
+                   public boolean onGroupClick(ExpandableListView p1, View view, int i, long p4) {
+                       Toast.makeText(getApplicationContext(),header_data.get(i),Toast.LENGTH_SHORT).show();
+                       return false;
+                   }
+                   
+               
+           });
+           
+           myListView.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener(){
+   
+                   @Override
+                   public void onGroupExpand(int index) {
+                       if(lastItem != -1 && lastItem!= index){
+                           myListView.collapseGroup(lastItem);
+                       }
+                       lastItem = index;
+                       //Toast.makeText(getApplicationContext(),"Expanded",Toast.LENGTH_SHORT).show();
+                   }
+                   
+               
+           });
+           
+           myListView.setOnGroupCollapseListener(new ExpandableListView.OnGroupCollapseListener(){
+   
+                   @Override
+                   public void onGroupCollapse(int index) {
+                       
+                       Toast.makeText(getApplicationContext(),"Collapsed",Toast.LENGTH_SHORT).show();
+                   }
+                   
+               
+           });
+           
+           myListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener(){
+   
+                   @Override
+                   public boolean onChildClick(ExpandableListView p1, View p2, int p3, int p4, long p5) {
+                       Toast.makeText(getApplicationContext(),"Child clicked",Toast.LENGTH_SHORT).show();
+                       return false;
+                   }
+                   
+               
+           });
+           
+       }
+       
+       // preparing data for expandable listView
+       public void prepareData(){
+           // getting data from xml
+           headerData = getResources().getStringArray(R.array.header_data);
+           detailsData = getResources().getStringArray(R.array.details_data);
+           // initializing:
+           header_data = new ArrayList<String>();
+           details_data = new HashMap<>();
+           
+           for(int i=0;i<headerData.length;i++){
+               header_data.add(headerData[i]);
+               // make a new arraylist for add in the hashmap as value of key
+               ArrayList<String> childData = new ArrayList<>();
+               childData.add(detailsData[i]);
+               
+               // adding data in hashmap/object
+               details_data.put(headerData[i],childData);
+           }
+           
+       }
+       
+       
+       // Another eay to preapare data 
+       public void prepareData2(){
+           header_data = new ArrayList<String>();
+           details_data= new HashMap<>();
+           
+           header_data.add("1. Whwt is an api?");
+           ArrayList<String> childData = new ArrayList<>();
+           childData.add("1.1. Lorem ipsum");
+           childData.add("1.2. Lorem ipsum");
+           childData.add("1.3. Lorem ipsum");
+           childData.add("1.4. Lorem ipsum");
+           
+           details_data.put(header_data.get(0),childData);
+           
+       }
+       
+	
+   } 
+   
+   ```
 
-```
-* Java File
-```java
+<a href="#index">⬆ Back to Top</a>
 
-```
+* **CustomAdapter.java**
+   ```java
+   package ...
+   import ...
+   
+   public class CustomAdapter extends BaseExpandableListAdapter {
+   
+       private Context context;
+       private ArrayList<String> headerData;
+       private HashMap<String,ArrayList<String>> detailsData;
+       
+       CustomAdapter(Context context,ArrayList<String> header_data,HashMap<String,ArrayList<String>> details_data){
+           this.context = context;
+           headerData = header_data;
+           detailsData = details_data;
+       }
+       
+       @Override
+       public int getGroupCount() {
+           return headerData.size();
+       }
+   
+       @Override
+       public int getChildrenCount(int p1) {
+           return detailsData.get(headerData.get(p1)).size();
+       }
+   
+       @Override
+       public Object getGroup(int p1) {
+           return headerData.get(p1);
+       }
+   
+       @Override
+       public Object getChild(int p1, int p2) {
+           // p1 --> group position
+           // p2 --> child position
+           return detailsData.get(headerData.get(p1)).get(p2);
+       }
+   
+       @Override
+       public long getGroupId(int p1) {
+           // group position
+           return p1;
+       }
+   
+       @Override
+       public long getChildId(int p1, int p2) {
+           // child position
+           return p2;
+       }
+   
+       // not needed
+       @Override
+       public boolean hasStableIds() {
+           return false;
+       }
+   
+       @Override
+       public View getGroupView(int p1, boolean p2, View view, ViewGroup p4) {        
+               String headerText = (String) getGroup(p1);
+               if(view == null){
+                   LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                   view = inflater.inflate(R.layout.header_layout,null);
+               }
+               TextView header_text= view.findViewById(R.id.header_text);
+               header_text.setText(headerText);
+           
+           return view;
+       }
+   
+       @Override
+       public View getChildView(int p1, int p2, boolean p3, View view, ViewGroup p5) {
+           String detailsText = (String) getChild(p1,p2);
+           LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+           view = inflater.inflate(R.layout.details_layout,null);
+           TextView details_text= view.findViewById(R.id.details_text);
+           details_text.setText(detailsText);
+           
+           return view;
+       }
+   
+       // // not needed
+       @Override
+       public boolean isChildSelectable(int p1, int p2) {
+           return true;
+       }
+
+   }   
+   ```
+
+<a href="#index">⬆ Back to Top</a>
 
 <p id="Fragment"></p>
 
 ## Fragment
+* activity_main.xml
+   ```xml
+	<?xml version="1.0" encoding="utf-8"?>
+	<LinearLayout
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:padding="0dp"
+		android:weightSum="4"
+		android:orientation="horizontal">
+	
+		<LinearLayout
+			android:orientation="vertical"
+			android:layout_width="0dp"
+			android:layout_height="match_parent"
+			android:layout_weight="2">
+	
+			<ListView
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:id="@+id/list_view"
+				android:layout_margin="0dp"/>
+	
+		</LinearLayout>
+	
+		<LinearLayout
+			android:orientation="vertical"
+			android:layout_width="wrap_content"
+			android:layout_height="match_parent"
+			android:layout_weight="2">
+	
+			<fragment
+				android:name="com.mycompany.application.SakibFragment"
+				android:id="@+id/fragment_id"
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:layout_margin="0dp">
+	
+			</fragment>
+	
+		</LinearLayout>
+	
+	</LinearLayout>
+   
+   ```
+
+<a href="#index">⬆ Back to Top</a>
+
+* fragment_sakib.xml
+   ```xml
+	<?xml version="1.0" encoding="utf-8"?>
+	<FrameLayout
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		android:orientation="vertical"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:padding="10dp"
+		android:background="#FF383933"
+		android:layout_margin="20dp">
+	
+		<LinearLayout
+			android:orientation="vertical"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:padding="20dp">
+	
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="Name:Sakib"/>
+	
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="Age:23"/>
+	
+		</LinearLayout>
+	
+	</FrameLayout>
+   
+   ```
+* fragment_alamin.xml
+   ```xml
+   <!--Same as Previous-->
+   ```
+
+<a href="#index">⬆ Back to Top</a>
+
+* SakibFragment.java
    ```java
+	public class SakibFragment extends Fragment {
+	
+	    @Override
+	    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+	        ///return super.onCreateView(inflater, container, savedInstanceState);
+	        
+	        return inflater.inflate(R.layout.fragment_sakib,container,false);
+	        
+	    }
+	                
+	}   
+   ```
+* AlaminFragment.java
+   ```java
+	public class SakibFragment extends Fragment {
+	
+	    @Override
+	    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+	        ///return super.onCreateView(inflater, container, savedInstanceState);
+	        
+	        return inflater.inflate(R.layout.fragment_alamin,container,false);
+	        
+	    }
+	                
+	}   
+   ```
+
+<a href="#index">⬆ Back to Top</a>
+
+* 
+   ```java
+	public class MainActivity extends Activity { 
+	    
+	    private ListView listView;
+	    
+	    
+	    @Override
+	    protected void onCreate(Bundle savedInstanceState) {
+	        super.onCreate(savedInstanceState);
+	        setContentView(R.layout.activity_main);
+	        
+	        listView= findViewById(R.id.list_view);
+	        String[] person_names = {"Sakib","Alamin"};
+	        ArrayAdapter adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,person_names);
+	        listView.setAdapter(adapter);
+	        
+	        listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+	
+	                @Override
+	                public void onItemClick(AdapterView<?> p1, View view, int i, long p4) {
+	                    Fragment fragment;
+	                    
+	                    if(i == 0){
+	                        //sakib
+	                        android.content.ClipboardManager clipboard = (android.content.ClipboardManager) getApplicationContext().getSystemService(Context.CLIPBOARD_SERVICE);
+	                        android.content.ClipData clip = android.content.ClipData.newPlainText("Copied Text", "rabbi");
+	                        clipboard.setPrimaryClip(clip);
+	                        Toast.makeText(getApplicationContext(),"text copied",Toast.LENGTH_SHORT).show();
+	                        fragment = new SakibFragment();
+	                        FragmentManager fm = getFragmentManager();
+	                        FragmentTransaction ft = fm.beginTransaction();
+	                        ft.replace(R.id.fragment_id,fragment);
+	                        ft.commit();
+	                    }
+	                    if(i == 1){
+	                        // alamin
+	                        fragment = new AlaminFragment();
+	                        FragmentManager fm = getFragmentManager();
+	                        FragmentTransaction ft = fm.beginTransaction();
+	                        ft.replace(R.id.fragment_id,fragment);
+	                        ft.commit();
+	                    }
+	                }
+	                
+	        });
+	        
+	    }
+		
+	} 
    
    ```
 

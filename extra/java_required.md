@@ -4,11 +4,7 @@ How Much Java Is Required For Android Development</h1>
 > Generally, you should lean every topics of java for be a Good-Android Developer.
 > If you are a begginer then learn Java From Youtube Channel `CodeWithHarry`.
 
-* And some important topics of java for Android Listed in bellow:
-
-
-### Core Concept Of Java For Android
-
+* **Here are some important topics of java for Android-Development:**
 * `Fundamentals`
    * Variables
    * Operators
@@ -25,5 +21,6 @@ How Much Java Is Required For Android Development</h1>
    * Interfaces
    * Array List
    * Hashmap
+   * Threads
    * Collection Framework
    
