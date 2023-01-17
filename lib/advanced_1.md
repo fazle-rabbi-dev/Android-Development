@@ -1,9 +1,7 @@
-<a href="#"><h2 align="center">Android Advanced (Part 1)</h2></a>
+<h2 align="center">Android Advanced Part One</h2>
 
 
 <p id="index"></p>
-
-## Index Of Content
 
 * [ListView & Array Adapter](#ArrayAdapter)
 * [ListView & Base/Custom Adapter](#CustomAdapter)
