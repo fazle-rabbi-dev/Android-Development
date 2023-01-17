@@ -1,5 +1,5 @@
 <div>
-   <img width="100%" src="android.jpg" alt="" />
+   <img width="100%" src="banner.jpg" alt="" />
 </div>
 
 <div align="center">
@@ -12,33 +12,36 @@
 
 </div>
 
-## 📭 About This Repository
+## 🎯 About This Repository
 
 <p align="center">This repository contains Android-Development roadmap,learning resources and Android Notes,Cheatsheet,Snippets.</p>
 
-## ⚡ Mini Roadmap
-* `Learn Java Programming`
-* `Learn Making Android Apps`
-* `Learn Firebase`
-* `Learn SQLite`
+## 🛣️ Mini Roadmap
+* Learn Java Programming
+* `Then` Learn Android-Development`
+* Learn Firebase
+* Learn SQLite
 * **How Much Java Required For Android**
-   * [See Here](#)
+   * [See Here](extra/java_required.md)
 
 ## 🔥 Best Free Learning Resources
-* `Youtube`
-   * [Java Tutorial]()
-   * [Android Tutorial]()
-* `Website`
+* #### `Youtube`
+   * [Java Tutorial (Harry)]()
+   * [Android Tutorial (Anisul Islam)]()
+* #### `Website`
    * [W3schools Java]()
    * [Javatpoint Java]()
    * [Javatpoint Android]()
    * [Android Documentation]()
 
-* **🤔 Is It Possible To Learn & Develop Android App Using Android Phone**
-* `The answer is YES!`
-* `By using` **AIDE.apk** `in your android phone you can Learn & Develop android app`
+## 🤔 Is It Possible To Learn & Develop Android App Using Android Phone
+* The answer is `YES`!
+* By using <a href="#">AIDE.apk</a> in your android phone you can Learn & Develop android app
+* **Fun Fact:** All the code available in the following notes are written in Android-Phone using <a href="#">AIDE.apk</a>
 
-## 📜 Android Notes/Cheatsheet
+---
+
+## 📜 Android Notes
 
 <div align="center">
    <table width="80%" align="center" border="1">
@@ -68,10 +71,22 @@
       </tr>
       <tr>
          <td align="center">06</td>
-         <td><a href="#">Styling</a></td>
+         <td><a href="#">Android Advanved (Part2)</a></td>
       </tr>
       <tr>
          <td align="center">07</td>
+         <td><a href="#">Android Data Storage</a></td>
+      </tr>
+      <tr>
+         <td align="center">08</td>
+         <td><a href="#">Android Api</a></td>
+      </tr>
+      <tr>
+         <td align="center">09</td>
+         <td><a href="#">Extra</a></td>
+      </tr>
+      <tr>
+         <td align="center">10</td>
          <td><a href="lib/admob.md">Admob Implementation</a></td>
       </tr>
    </table>
