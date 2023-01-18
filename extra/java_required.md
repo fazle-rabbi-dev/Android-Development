@@ -5,22 +5,25 @@ How Much Java Is Required For Android Development</h1>
 > If you are a begginer then learn Java From Youtube Channel `CodeWithHarry`.
 
 * **Here are some important topics of java for Android-Development:**
-* `Fundamentals`
+1. `Fundamentals`
    * Variables
    * Operators
    * Conditions
    * Loops
    * Array
    * Function/Method
-* `OOP`
+2. `OOP`
    * Class
    * Object
    * Inheritance
    * Abstract Class
-   * Anonymous Class
    * Interfaces
-   * Array List
-   * Hashmap
-   * Threads
+   * Anonymous Class
+ 
+3. `Others`
+   * Error Handling
+   * Threads & Library
    * Collection Framework
+		* Array List
+		* Hashmap
    

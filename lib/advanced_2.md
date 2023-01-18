@@ -1,8 +1,7 @@
-<a href="#"><h2 align="center">Android Advanced (Part 2)</h2></a>
+<h2 align="center">Android Advanced (Part 2)</h2>
 
 <p id="index"></p>
 
-## Index Of Content
 * [Add Back Button In Actionbar](#BackButton)
 * [Add Logo In Actionbar](#LogoInActionbar)
 * [Applying Style Using styles.xml](#ApplyingStyle)
@@ -12,6 +11,9 @@
 * [CardView](#CardView)
 * [Make Specific Activity Into Fullscreen Activity](#Fullscreen)
 * [Navigation Drawer](#Navigation)
+* [Tab Drawer](#Tab)
+* [Create Modal](#Modal)
+
 
 <p id="BackButton"></p>
 
