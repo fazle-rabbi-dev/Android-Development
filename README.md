@@ -17,17 +17,24 @@
 <p align="center">This repository contains Android-Development roadmap,learning resources and Android Notes,Cheatsheet,Snippets.</p>
 
 ## 🛣️ Mini Roadmap
+* [Android Roadmap Video](https://youtu.be/A14BLDzNy2k)
 * Learn Java Programming
 * `Then` Learn Android-Development`
 * Learn Firebase
 * Learn SQLite
 * **How Much Java Required For Android**
-   * [See Here](extra/java_required.md)
+   * [Read Here](extra/java_required.md)
+	* [Watch This Video](https://youtu.be/OF5CO35R_Ek)
 
 ## 🔥 Best Free Learning Resources
 * #### `Youtube` *Recomended*
-   * [Java Tutorial (Harry)](https://youtube.com/playlist?list=PLu0W_9lII9agS67Uits0UnJyrYiXhDS6q)
-   * [Android Tutorial (Anisul Islam)](https://youtube.com/playlist?list=PLgH5QX0i9K3p9xzYLFGdfYliIRBLVDRV5)
+   1. [Java Tutorial - Harry](https://youtube.com/playlist?list=PLu0W_9lII9agS67Uits0UnJyrYiXhDS6q)
+   2. [Android Tutorial - Anisul Islam](https://youtube.com/playlist?list=PLgH5QX0i9K3p9xzYLFGdfYliIRBLVDRV5)
+   3. [Android in one video - Harry](https://youtu.be/mXjZQX3UzOs)
+   4. [Android Tutorial - Harry](https://youtube.com/playlist?list=PLu0W_9lII9aiL0kysYlfSOUgY5rNlOhUd)
+   5. [Android Tutorial - YoursTRULY](https://youtube.com/playlist?list=PLdHg5T0SNpN2cv8zhK-zQx2qXfJKap9kU)
+   6. [Android Project - Technic Dude](https://youtube.com/playlist?list=PLgZ4V8HUCjcME5pRkyIt9keUm_pm-ZsU6)
+   
 * #### `Website`
    * [W3schools Java](https://www.w3schools.com/java/default.asp)
    * [Javatpoint Java](https://www.javatpoint.com/java-tutorial)
