@@ -11,7 +11,7 @@
 * [CardView](#CardView)
 * [Make Specific Activity Into Fullscreen Activity](#Fullscreen)
 * [Navigation Drawer](#Navigation)
-* [Tab Drawer](#Tab)
+* [Tab Navigation](#Tab)
 * [Create Modal](#Modal)
 
 
@@ -266,6 +266,138 @@
 	   
 	}   
    ```
+
+<a href="#index">⬆ Back to Top</a>
+
+<p id="CardView"></p>
+
+## CardView
+* **build.gradle**
+   ```gradle
+   implementation "com.android.support:cardView-v7:27.1.1"
+   ```
+* **activity_main.xml**
+
+	<details>
+	<summary>Expand</summary>
+	
+	```xml
+	<?xml version="1.0" encoding="utf-8"?>
+	<LinearLayout
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:background="#FFFFFFFF"
+		android:padding="20dp"
+		android:orientation="vertical"
+		android:weightSum="2">
+	
+		<LinearLayout
+			android:orientation="horizontal"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_weight="1.0"
+			android:weightSum="2">
+	
+			
+			<android.support.v7.widget.CardView
+				android:layout_weight="1.0"
+				android:layout_height="match_parent"
+				android:layout_width="match_parent"
+	      android:clickable="true"
+	      android:foreground="?android:attr/selectableItemBackground"
+	      android:gravity="center"
+	      android:layout_margin="2dp"
+	      android:id="@+id/card_c"
+	      >
+	        
+	        <LinearLayout
+	           android:layout_height="match_parent"
+	           android:layout_width="match_parent"
+	           android:gravity="center"
+	           android:background="#ededed"
+	           android:orientation="vertical"
+	           >
+	             <ImageView
+	                android:layout_height="50dp"
+	                android:layout_width="50dp"
+	                android:src="@drawable/c"
+	                android:background="@drawable/circle_purple_bg"
+	                android:padding="10dp"
+	                />
+	             <View
+	                android:layout_height="2dp"
+	                android:layout_width="match_parent"
+	                android:background="#584beb"
+	                android:layout_margin="5dp"
+	                
+	                />
+	             <TextView
+	                android:layout_height="wrap_content"
+	                android:layout_width="wrap_content"
+	                android:text="C Programming"
+	                android:textColor="#784beb"
+	                android:textStyle="bold"
+	                android:typeface="serif"
+	                />
+	           
+	        </LinearLayout>
+	      
+			</android.support.v7.widget.CardView>
+	    <android.support.v7.widget.CardView
+	        android:layout_weight="1.0"
+	        android:layout_height="match_parent"
+	        android:layout_width="match_parent"
+	        android:clickable="true"
+	        android:foreground="?android:attr/selectableItemBackground"
+	        android:gravity="center"
+	        android:layout_margin="2dp"
+	        android:id="@+id/card_java"
+	     >
+	
+	        <LinearLayout
+	           android:layout_height="match_parent"
+	           android:layout_width="match_parent"
+	           android:gravity="center"
+	           android:background="#ededed"
+	           android:orientation="vertical"
+	        >
+	           <ImageView
+	              android:layout_height="50dp"
+	              android:layout_width="50dp"
+	              android:src="@drawable/java"
+	              android:background="@drawable/circle_pink_bg"
+	              android:padding="10dp"
+	              
+	           />
+	           <View
+	              android:layout_height="2dp"
+	              android:layout_width="match_parent"
+	              android:background="#FFED129D"
+	              android:layout_margin="5dp"
+	
+	           />
+	           <TextView
+	              android:layout_height="wrap_content"
+	              android:layout_width="wrap_content"
+	              android:text="Java Programming"
+	              android:textColor="#FFED129D"
+	              android:textStyle="bold"
+	              android:typeface="serif"
+	           />
+	
+	        </LinearLayout>
+	
+	     </android.support.v7.widget.CardView>
+	
+		</LinearLayout>
+	
+		     
+	</LinearLayout>
+	
+	```
+	   
+	</details>   
 
 <a href="#index">⬆ Back to Top</a>
 
