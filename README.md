@@ -19,7 +19,7 @@
 ## 🛣️ Mini Roadmap
 * [Android Roadmap Video](https://youtu.be/A14BLDzNy2k)
 * Learn Java Programming
-* `Then` Learn Android-Development`
+* `Then` Learn Android-Development
 * Learn Firebase
 * Learn SQLite
 * **How Much Java Required For Android**
@@ -96,10 +96,14 @@
       </tr>
       <tr>
          <td align="center">10</td>
+         <td><a href="">Responsive Design</a></td>
+      </tr>
+      <tr>
+         <td align="center">11</td>
          <td><a href="lib/admob.md">Admob Implementation</a></td>
       </tr>
       <tr>
-         <td align="center">10</td>
+         <td align="center">12</td>
          <td>Publishing App To Play Store </td>
       </tr>
    </table>

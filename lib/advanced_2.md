@@ -1,4 +1,4 @@
-<h2 align="center">Android Advanced (Part 2)</h2>
+<h2 align="center">Android Advanced Part Two</h2>
 
 <p id="index"></p>
 
@@ -12,8 +12,7 @@
 * [Make Specific Activity Into Fullscreen Activity](#Fullscreen)
 * [Navigation Drawer](#Navigation)
 * [Tab Navigation](#Tab)
-* [Create Modal](#Modal)
-
+* [Recycler View](#Recycler)
 
 <p id="BackButton"></p>
 
@@ -408,6 +407,122 @@
    ```java
    // write this code after setContentView
    getActionBar().hide();
+   ```
+
+<a href="#index">⬆ Back to Top</a>
+
+
+<p id="Drawer"></p>
+
+## Navigation Drawer
+* activity_main.xml
+   ```xml
+	<android.support.v4.widget.DrawerLayout
+	   xmlns:android="http://schemas.android.com/apk/res/android"
+	   xmlns:app="http://schemas.android.com/apk/res-auto"
+	   xmlns:tools="http://schemas.android.com/tools"
+	   android:layout_width="match_parent"
+	   android:layout_height="match_parent"
+	   id="@+id/drawerId"
+	   tools:openDrawer="start"
+	>
+	
+	   <android.support.v7.widget.Toolbar
+	      android:id="@+id/toolbar"
+	      android:layout_width="match_parent"
+	      android:layout_height="?attr/actionBarSize"
+	      app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+	   
+	
+	   <android.support.design.widget.NavigationView
+	      android:layout_width="wrap_content"
+	      android:layout_height="match_parent"
+	      id="@+id/navId"
+	      app:menu="@menu/nav_layout"
+	      android:layout_gravity="start"
+	      app:headerLayout="@layout/nav_header"
+	   >
+	
+	   </android.support.design.widget.NavigationView>
+	
+	</android.support.v4.widget.DrawerLayout>
+   
+   ```
+* res/menu/nav_layout.xml
+   ```xml
+	<?xml version="1.0" encoding="utf-8"?>
+	<menu xmlns:android="http://schemas.android.com/apk/res/android"
+	   xmlns:tools="http://schemas.android.com/tools"
+	   tools:showIn="navigation_view"
+	>
+	
+	   <group android:checkableBehavior="single">
+	
+	      <item
+	         android:id="@+id/homeId"
+	         android:title="Home"
+	         android:icon="@drawable/home"
+	      />
+	      <item
+	         android:id="@+id/aboutId"
+	         android:title="About"
+	         android:icon="@drawable/about"
+	
+	      />
+	
+	      <item
+	         android:id="@+id/contactId"
+	         android:title="Contact"
+	         android:icon="@drawable/contact"
+	
+	      />
+	
+	   </group>
+	
+	
+	</menu>   
+   ```
+* res/layout/nav_header.xml
+	```xml
+	<?xml version="1.0" encoding="utf-8"?>
+	<LinearLayout
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		android:orientation="vertical"
+		android:layout_width="match_parent"
+		android:layout_height="150dp"
+		android:background="#FF08939A"
+		android:gravity="center">
+	
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="Nav Header"
+			android:textAppearance="?android:attr/textAppearanceLarge"/>
+	
+	</LinearLayout>
+	
+	```
+
+
+<a href="#index">⬆ Back to Top</a>
+
+
+<p id="Tab"></p>
+
+## Tab Navigation
+*
+```gradle
+compile 'com.android.support:appcompat-v7:27.1.1'
+compile 'com.android.support:design:27.1.1'
+compile 'com.android.support:support-v4:27.1.1'
+```
+* 
+   ```xml
+   
+   ```
+* 
+   ```java
+   
    ```
 
 <a href="#index">⬆ Back to Top</a>

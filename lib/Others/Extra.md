@@ -9,9 +9,9 @@
 * [Add Border In Button](#)
 * [Add Radius In Button](#)
 * [Add Hover In Button](#)
-* [Copy Text](#)
+* [Copy Text](#Copy)
+* [Pull Down Refresh](#Refresh)
 * [Api Calling](#)
-* [Pull Down Refresh](#)
 * [Custom Header](#)
 * [Get Network Info](#)
 * [Pdf View](#)
@@ -92,4 +92,71 @@
 	
 	</shape>	
 	```
+
+
+## Copy Text
+```java
+android.content.ClipboardManager clipboard = (android.content.ClipboardManager) getApplicationContext().getSystemService(Context.CLIPBOARD_SERVICE);
+android.content.ClipData clip = android.content.ClipData.newPlainText("Copied Text", "rabbi");
+clipboard.setPrimaryClip(clip);
+```
+
+## Pull Down To Refresh
+* build.gradle
+```gradle
+implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
+```
+* activity_main.xml
+```xml
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/swipeRefresh"
+    >
+
+    <TextView
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:id="@+id/text"
+       android:text="Home Screen"
+       />
+    
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+```
+* MainActivity.java
+```java
+//make variable
+private SwipeRefreshLayout swipeRefresh;
+// find layout
+swipeRefresh = findViewById(R.id.swipeRefresh);
+
+	swipeRefresh.setColorSchemeColors(Color.BLUE, Color.RED, Color.GREEN);
+	swipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener(){
+
+    @Override
+    public void onRefresh() {
+       Toast.makeText(getApplicationContext(),"Refreshing",Toast.LENGTH_SHORT).show();
+       
+       Thread thread = new Thread(new Runnable(){
+
+             @Override
+             public void run() {
+                try {
+                   Thread.sleep(4000);
+                   swipeRefresh.setRefreshing(false);
+                } catch (InterruptedException e) {}
+             }
+             
+          
+       });
+       
+       thread.start();
+       
+    }
+    
+  
+});
+
+```
 
