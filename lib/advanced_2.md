@@ -510,35 +510,186 @@
 <p id="Tab"></p>
 
 ## Tab Navigation
-*
+* build.gradle
 ```gradle
 compile 'com.android.support:appcompat-v7:27.1.1'
 compile 'com.android.support:design:27.1.1'
 compile 'com.android.support:support-v4:27.1.1'
 ```
-* 
+* activity_main.xml
    ```xml
-   
+   <android.support.design.widget.TabLayout
+		android:layout_height="wrap_content"
+		android:layout_width="match_parent"
+		android:id="@+id/tabLayout"
+		android:background="#FF56EEEE"
+     android:layout_weight="2"
+    >
+
+	</android.support.design.widget.TabLayout>
+
    ```
-* 
+* MainActivity.java
    ```java
-   
+   // make viewpager
+   viewPager.setAdapter(adapter);
+   tabLayout.setupWithViewPager(viewPager);
    ```
 
 <a href="#index">⬆ Back to Top</a>
 
 
-<p id=""></p>
+<p id="Recycler"></p>
 
-## 
-* 
+## Recycler View
+* build.gradle
+	```gradle
+	compile 'com.android.support:recyclerview-v7:27.1.1'
+	```
+* activity_main.xml
    ```xml
-   
+   <android.support.v7.widget.RecyclerView
+     android:layout_height="match_parent"
+     android:layout_width="match_parent"
+     android:id="@+id/recyclerView"
+    />
    ```
-* 
+* **write string-array in strings.xml**
+* **Make a sample layout**
+* MainActivity.java
    ```java
+	package com.mycompany.application;
+	
+	import android.os.Bundle;
+	import android.support.v7.app.AppCompatActivity;
+	import android.support.v7.widget.Toolbar;
+	import android.support.v7.widget.RecyclerView;
+	import android.support.v7.widget.LinearLayoutManager;
+	import android.view.View;
+	import android.widget.Toast;
+	
+	public class MainActivity extends AppCompatActivity {
+	    private RecyclerView recyclerView; 
+	    String[] country_names;
+	    String[] country_details;
+	    
+	    @Override
+	    protected void onCreate(Bundle savedInstanceState) {
+	        super.onCreate(savedInstanceState);
+	        setContentView(R.layout.activity_main);
+			
+			    Toolbar toolbar=(Toolbar)findViewById(R.id.toolbar);
+			    setSupportActionBar(toolbar);
+	        
+	        recyclerView = findViewById(R.id.recyclerView);
+	        country_names = getResources().getStringArray(R.array.country_names);
+	        country_details = getResources().getStringArray(R.array.country_desc);
+	        
+	        MyAdapter adapter = new MyAdapter(this,country_names,country_details);
+	        recyclerView.setAdapter(adapter);
+	        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+	        
+	       adapter.setOnItemClickListener(new MyAdapter.ClickListener(){
+	
+	             @Override
+	             public void onItemClick(int position, View view) {
+	                Toast.makeText(getApplicationContext(),"Clicked: "+country_names[position],Toast.LENGTH_SHORT).show();
+	             }
+	                        
+	        });
+	        
+	    }
+	    
+	}
    
    ```
+* MyAdapter.java
+
+	<details>
+	<summary>Click To Expand</summary>
+	
+	```java
+	package com.mycompany.application;
+	import android.support.v7.widget.RecyclerView;
+	import android.view.ViewGroup;
+	import android.view.View;
+	import android.content.Context;
+	import android.view.LayoutInflater;
+	import android.widget.TextView;
+	
+	public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
+	  
+	   private Context context;
+	   private String[] country_names;
+	   private String[] country_details;
+	   private static ClickListener clickListener;
+	   
+	   MyAdapter(Context context,String[] country_names,String[] country_details){
+	      this.context = context;
+	      this.country_names = country_names;
+	      this.country_details = country_details;
+	   }
+	   
+	   @Override
+	   public MyViewHolder onCreateViewHolder(ViewGroup viewGroup, int p2) {
+	      
+	      LayoutInflater inflater = LayoutInflater.from(context);
+	      View view =inflater.inflate(R.layout.sample_layout,viewGroup,false);
+	      return new MyViewHolder(view);
+	   }
+	
+	   @Override
+	   public void onBindViewHolder(MyViewHolder myViewHolder, int i) {
+	      myViewHolder.countryName.setText(country_names[i]);
+	      myViewHolder.countryDetails.setText(country_details[i]);
+	      
+	      //myViewHolder.countryName.setText("Test");
+	      //myViewHolder.countryDetails.setText("ok");
+	      
+	      
+	   }
+	
+	   @Override
+	   public int getItemCount(){
+	      return country_names.length;
+	   }
+	   
+	
+	   class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+	     
+	      TextView countryName,countryDetails;
+	      
+	      public MyViewHolder(View itemView){
+	         super(itemView);
+	         
+	         countryName = itemView.findViewById(R.id.countryName);
+	         countryDetails = itemView.findViewById(R.id.countryDetails);
+	         
+	         // set listener
+	         itemView.setOnClickListener(this);
+	      }
+	      
+	      @Override
+	      public void onClick(View view) {
+	         clickListener.onItemClick(getAdapterPosition(),view);
+	      }      
+	      
+	   }
+	    
+	   public interface ClickListener{
+	      void onItemClick(int position,View view);
+	   }
+	   
+	   public void setOnItemClickListener(ClickListener clickListener){
+	      MyAdapter.clickListener = clickListener;
+	   }
+	    
+	}		
+	```
+	
+	</details>
+
+
 
 <a href="#index">⬆ Back to Top</a>
 
