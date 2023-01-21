@@ -10,7 +10,7 @@
 * [Scroll Tabs/ViewPager](#ViewPager)
 * [CardView](#CardView)
 * [Make Specific Activity Into Fullscreen Activity](#Fullscreen)
-* [Navigation Drawer](#Navigation)
+* [Navigation Drawer](#Drawer)
 * [Tab Navigation](#Tab)
 * [Recycler View](#Recycler)
 
@@ -417,36 +417,68 @@
 ## Navigation Drawer
 * activity_main.xml
    ```xml
+	<?xml version="1.0" encoding="utf-8"?>
 	<android.support.v4.widget.DrawerLayout
 	   xmlns:android="http://schemas.android.com/apk/res/android"
 	   xmlns:app="http://schemas.android.com/apk/res-auto"
 	   xmlns:tools="http://schemas.android.com/tools"
 	   android:layout_width="match_parent"
 	   android:layout_height="match_parent"
-	   id="@+id/drawerId"
+	   android:id="@+id/drawerId"
 	   tools:openDrawer="start"
 	>
 	
-	   <android.support.v7.widget.Toolbar
-	      android:id="@+id/toolbar"
-	      android:layout_width="match_parent"
-	      android:layout_height="?attr/actionBarSize"
-	      app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
-	   
 	
+	   <LinearLayout
+	      android:layout_width="match_parent"
+	      android:layout_height="match_parent"
+	      android:orientation="vertical">
+	
+	      <android.support.design.widget.AppBarLayout
+	         android:layout_width="match_parent"
+	         android:layout_height="wrap_content"
+	         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+	
+	         <android.support.v7.widget.Toolbar
+	            android:background="#FFDA2180"
+	            android:id="@+id/toolbar"
+	            android:layout_width="match_parent"
+	            android:layout_height="?attr/actionBarSize"
+	            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+	
+	      </android.support.design.widget.AppBarLayout>
+	
+	      <FrameLayout
+	         android:layout_width="match_parent"
+	         android:layout_height="match_parent"
+	         android:id="@+id/frameContainer"          
+	
+	      />
+	
+	
+	      <!--<TextView
+	      android:text="Ok"
+	      android:layout_height="wrap_content"
+	      android:layout_width="wrap_content"
+	      />-->
+	
+	   </LinearLayout>
+	
+	   <!-- -->
 	   <android.support.design.widget.NavigationView
 	      android:layout_width="wrap_content"
 	      android:layout_height="match_parent"
-	      id="@+id/navId"
+	      android:id="@+id/drawerView"
 	      app:menu="@menu/nav_layout"
+	      app:headerLayout="@menu/nav_header"
 	      android:layout_gravity="start"
-	      app:headerLayout="@layout/nav_header"
+	
 	   >
 	
 	   </android.support.design.widget.NavigationView>
 	
 	</android.support.v4.widget.DrawerLayout>
-   
+	 
    ```
 * res/menu/nav_layout.xml
    ```xml
@@ -502,6 +534,98 @@
 	</LinearLayout>
 	
 	```
+* **MainActivity.java**
+	```java
+	package com.mycompany.application;
+	
+	import android.os.Bundle;
+	import android.support.v7.app.AppCompatActivity;
+	import android.support.v7.widget.Toolbar;
+	import android.support.design.widget.NavigationView;
+	import android.support.v4.widget.DrawerLayout;
+	import android.support.v7.app.ActionBarDrawerToggle;
+	import android.view.MenuItem;
+	import android.content.Intent;
+	import android.widget.FrameLayout;
+	
+	public class MainActivity extends AppCompatActivity {
+	   private DrawerLayout drawerLayout; 
+	   private ActionBarDrawerToggle actionBarDrawerToggle;
+	   
+	    @Override
+	    protected void onCreate(Bundle savedInstanceState) {
+	       super.onCreate(savedInstanceState);
+	       setContentView(R.layout.activity_main);
+			
+			   Toolbar toolbar=(Toolbar)findViewById(R.id.toolbar);
+			   setSupportActionBar(toolbar);
+	        
+	       NavigationView navigationView = (NavigationView) findViewById(R.id.drawerView);
+	
+	       
+	       drawerLayout = (DrawerLayout) findViewById(R.id.drawerId);
+	       actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.drawer_open, R.string.drawer_close);
+	       drawerLayout.setDrawerListener(actionBarDrawerToggle);
+	       actionBarDrawerToggle.syncState();
+	       
+	       // For Home Screen
+	       //FrameLayout contentFrameLayout = (FrameLayout) findViewById(R.id.frameContainer); //Remember this is the FrameLayout area within your activity_main.xml
+	       //getLayoutInflater().inflate(R.layout.about, contentFrameLayout);
+	         
+	       
+	       navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+	             @Override
+	             public boolean onNavigationItemSelected(MenuItem item) {
+	                drawerLayout.closeDrawers();
+	               
+	                //FrameLayout fl = findViewById(R.id.frameContainer);
+	                /*getSupportFragmentManager().beginTransaction().replace(R.id.frameContainer,
+	                              new About()).commit();
+	                */
+	                
+	                Intent intent = new Intent(getApplicationContext(),About.class);
+	                startActivity(intent);
+	                
+	                return false;
+	             }
+	          });
+	        
+	    }
+	    
+	}
+	
+	```
+* **About.java**
+	```java
+	package com.mycompany.application;
+	import android.os.Bundle;
+	import android.widget.FrameLayout;
+	import android.support.v4.app.Fragment;
+	import android.view.LayoutInflater;
+	import android.view.View;
+	import android.view.ViewGroup;
+	import android.widget.Button;
+	import android.widget.Toast;
+	import android.content.Intent;
+	
+	public class About extends MainActivity {
+	
+	   private Button demoBtn;
+	   
+	   @Override
+	   protected void onCreate(Bundle savedInstanceState) {
+	      super.onCreate(savedInstanceState);
+	      
+	      //demoBtn = findViewById(R.id.demoBtn);
+	      FrameLayout contentFrameLayout = (FrameLayout) findViewById(R.id.frameContainer); //Remember this is the FrameLayout area within your activity_main.xml
+	      getLayoutInflater().inflate(R.layout.about, contentFrameLayout);
+	      
+	   }                
+	}	
+	```
+
+
+
 
 
 <a href="#index">⬆ Back to Top</a>
