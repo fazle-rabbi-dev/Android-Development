@@ -1,14 +1,11 @@
-<h2 align="center">Extra Topics</h2>
+<h2 align="center">Extra Concept</h2>
 
 * [Hyperlink](#)
 * [Change Actionbar Color](#)
 * [Change Navigationbar Color](#)
 * [Change Statusbar Color](#)
+* [Button Styling](#Button)
 * [Add Rounded Icon](#)
-* [How To Make Shape Background](#)
-* [Add Border In Button](#)
-* [Add Radius In Button](#)
-* [Add Hover In Button](#)
 * [Copy Text](#Copy)
 * [Pull Down Refresh](#Refresh)
 * [Api Calling](#)
@@ -16,8 +13,8 @@
 * [Get Network Info](#)
 * [Pdf View](#)
 * [Zoom Screen](#)
-* [](#)
-* [](#)
+* [Document Picker](#)
+* [File Download](#)
 
 
 ## Hyperlink
@@ -93,7 +90,6 @@
 	</shape>	
 	```
 
-
 ## Copy Text
 ```java
 android.content.ClipboardManager clipboard = (android.content.ClipboardManager) getApplicationContext().getSystemService(Context.CLIPBOARD_SERVICE);
@@ -159,4 +155,76 @@ swipeRefresh = findViewById(R.id.swipeRefresh);
 });
 
 ```
+
+<p id="NavigationbarColor"></p>
+
+## NavigationbarColor Change
+* styles.xml
+```xml
+<item name="android:navigationBarColor">@color/primary</item>
+```
+
+[Back To Top](#index)
+
+<p id="Button"></p>
+
+## Button Styling
+* make 3 resource file
+* add `@drawable/button` as Background in `Button`
+* button.xml
+	```
+	<?xml version="1.0" encoding="utf-8"?>
+	<selector
+	   xmlns:android="http://schemas.android.com/apk/res/android"
+	   >
+	   
+	   <item android:state_pressed="false" android:drawable="@drawable/btn_normal"/>
+	   <item android:state_pressed="true" android:drawable="@drawable/btn_hover"/>
+	      
+	</selector>
+	
+	```
+* btn_normal.xml
+	```
+	<?xml version="1.0" encoding="utf-8"?>
+	<shape
+	   android:shape="rectangle"
+	   xmlns:android="http://schemas.android.com/apk/res/android"
+	>
+	
+	   <solid android:color="#FFED129D"></solid>
+	   <corners android:radius="10dp"/>
+	   <stroke android:width="3dp"
+	           android:color="#ededed"
+	      />
+	   
+	</shape>		
+	```
+* btn_hover.xml
+	```
+	<?xml version="1.0" encoding="utf-8"?>
+	<shape
+	   android:shape="rectangle"
+	   xmlns:android="http://schemas.android.com/apk/res/android"
+	>
+	
+	   <solid android:color="#FFB9107B"></solid>
+	   <corners android:radius="10dp"/>
+	   <stroke android:width="3dp"
+	      android:color="#ededed"
+	   />
+	      
+	</shape>		
+	```
+
+[Back To Top](#index)
+
+<p id=""></p>
+
+## 
+```
+
+```
+
+[Back To Top](#index)
 
