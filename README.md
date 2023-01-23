@@ -96,7 +96,7 @@
       </tr>
       <tr>
          <td align="center">10</td>
-         <td><a href="lib/Others/apiCalling.md">Api Calling</a></td>
+         <td><a href="lib/apiCalling.md">Api Calling</a></td>
       </tr>
       <tr>
          <td align="center">11</td>

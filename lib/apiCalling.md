@@ -1,13 +1,21 @@
-# Api Calling Using HTTTP Volley Library
+<h1 align="center">Api Calling Using HTTTP Volley Library</h1>
 
 
-* Dependency
+* ### Dependency
 	```gradle
 	implementation 'com.android.volley:volley:1.1.1'
 	```
 
 <p id="index"></p>
 
+* ### Fix Twice Request
+	```java
+	jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(
+		0,
+		DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+		DefaultRetryPolicy.DEFAULT_BACKOFF_MULT
+	));
+	```
 * [Json Array Get Request](#JsonArrayGetRequest)
 * [Json Array Get Request And Display Data In RecyclerView](#jsonArrayRequest&display)
 * [Json Object Get Requet](#JsonObjectGetRequest)
