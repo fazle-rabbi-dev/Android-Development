@@ -8,14 +8,13 @@
 * [Add Rounded Icon](#)
 * [Copy Text](#Copy)
 * [Pull Down Refresh](#Refresh)
-* [Api Calling](#)
 * [Custom Header](#)
 * [Get Network Info](#)
 * [Pdf View](#)
 * [Zoom Screen](#)
 * [Document Picker](#)
 * [File Download](#)
-
+* [Runtime Permission](#Permission)
 
 ## Hyperlink
 * **Method 1**
@@ -215,6 +214,41 @@ swipeRefresh = findViewById(R.id.swipeRefresh);
 	   />
 	      
 	</shape>		
+	```
+
+[Back To Top](#index)
+
+<p id="Permission"></p>
+
+## Runtime Permission
+* Dependency
+	```gradle
+	implementation 'com.karumi:dexter:6.2.3'
+	```
+* MainActivity.java
+	```java
+	//Prompt For Access Storage
+	Dexter.withContext(this)
+          .withPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
+          .withListener(new PermissionListener(){
+
+             @Override
+             public void onPermissionGranted(PermissionGrantedResponse p1) {
+                // Do something
+             }
+
+             @Override
+             public void onPermissionDenied(PermissionDeniedResponse p1) {
+             }
+
+             @Override
+             public void onPermissionRationaleShouldBeShown(PermissionRequest pRequest, PermissionToken pToken) {
+                pToken.continuePermissionRequest();
+             }
+             
+             
+          })
+          .check();
 	```
 
 [Back To Top](#index)
