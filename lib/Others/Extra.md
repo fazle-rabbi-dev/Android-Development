@@ -35,6 +35,9 @@
 * [File Download](#)
 
 
+# Question Link
+* [When Keyboard Appear Layout Will Be Resize](https://stackoverflow.com/questions/16411056/how-to-adjust-layout-when-soft-keyboard-appears)
+
 <p id="Hyperlink"></p>
 
 ## Hyperlink
