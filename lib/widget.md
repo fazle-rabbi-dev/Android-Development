@@ -22,7 +22,7 @@
 * [Analog Clock](#Analog)
 * [Digital Clock](#Digital)
 * [Alert Dialog](#Alert)
-* `Custom Alert Dialog`
+* [Custom Alert Dialog](#CustomAlert)
 * [VideoView](#VideoView)
 * [ZoomControlls](#ZoomControlls)
 * [Layout Weight & WeightSum](#WeightSum)
@@ -655,6 +655,40 @@ skipBtn.setOnClickListener(new View.OnClickListener(){
 ```
 <a href="#index">⬆ Back to Top</a>
 
+<p id="CustomAlert"></p>
+
+## Custom Alert
+```java
+// Show Custom Alert Dialog
+public void show_custom_alert(final Context context){
+   LayoutInflater inflater = LayoutInflater.from(context);
+   View view = inflater.inflate(R.layout.no_internet_custom_alert,null);
+   AlertDialog.Builder ab = new AlertDialog.Builder(context);
+   ab.setView(view);
+   
+   Button retryBtn = view.findViewById(R.id.retryBtn);
+   retryBtn.setOnClickListener(new View.OnClickListener(){
+
+         @Override
+         public void onClick(View p1) {
+            if(!has_internet){
+               noInternetDialog.dismiss();
+               show_custom_alert(context);
+            }
+            else{
+               noInternetDialog.dismiss();
+            }
+         }
+                  
+   });
+   
+   // AlertDialog -->
+   noInternetDialog = ab.create();
+   noInternetDialog.show();
+}
+```
+<a href="#index">⬆ Back to Top</a>
+
 <p id="ZoomControlls"></p>
 
 ## ZoomControlls
@@ -809,6 +843,10 @@ public class MainActivity extends Activity {
 <p id="Font"></p>
 
 ## Custom Font
+* 1st Method:
+	* Make `font` directory
+	* Add `FontFamily` attribute in TextView
+* 2nd Method
 ```java
 text = findViewById(R.id.text);
 myFont = Typeface.createFromAsset(getAssets(),"Baloo_2_regular.ttf");
